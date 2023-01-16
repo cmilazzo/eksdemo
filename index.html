@@ -14,7 +14,7 @@
       'CF-Access-Client-Secret': 'bd4b9e943f6fc2c4c0e1bf3e6c38f95f0147ff4a715a4f4a4ba1618723191e59'
     }
   })
-      .then(response => response.json())
+      .then(response => response.text())
       .then(data => {
         // Get the data container
         const container = document.getElementById('data');
