@@ -33,7 +33,12 @@
 
   <script>
     // Fetch the data from the API
-    fetch('https://rtf.chrismilazzo.com/')
+    fetch('https://rtf.chrismilazzo.com/', {
+    headers: {
+      'Access-Control-Allow-CF-Access-Client-Id': 'e67a81f67394bb0bbe4315146e9ec80e.access',
+      'CF-Access-Client-Secret': 'bd4b9e943f6fc2c4c0e1bf3e6c38f95f0147ff4a715a4f4a4ba1618723191e59'
+    }
+  })
       .then(response => response.json())
       .then(data => {
         // Get the data container
