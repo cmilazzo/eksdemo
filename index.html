@@ -1,29 +1,39 @@
 <html></html>
 <head>
   <title>API Data</title>
+  <style>
+    #data {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #ddd;
+    }
+    #data p {
+        margin: 10px 0;
+    }
+</style>
 </head>
 <body>
   <div id="data"></div>
 
   <script>
     // Fetch the data from the API
-    fetch('https://rtf.chrismilazzo.com/hello/hello', {
+    fetch('https://cors-anywhere.herokuapp.com/https://rtf.chrismilazzo.com/hello/hello', {
     headers: {
       'Access-Control-Allow-CF-Access-Client-Id': 'e67a81f67394bb0bbe4315146e9ec80e.access',
       'CF-Access-Client-Secret': 'bd4b9e943f6fc2c4c0e1bf3e6c38f95f0147ff4a715a4f4a4ba1618723191e59'
     }
   })
-      .then(response => response.text())
-      .then(data => {
-        // Get the data container
-        const container = document.getElementById('data');
-        
-        // Iterate over the data and add it to the container
-        for (const item of data) {
-          container.innerHTML += `<p>${item.name}: ${item.value}</p>`;
-        }
-      })
-      .catch(error => console.error(error));
+  .then(response => response.json())
+  .then(data => {
+    // Get the data container
+    const container = document.getElementById('data');
+    container.innerHTML += `<p>${data.message}</p>`;
+    for (const key in data) {
+      container.innerHTML += `<p>${key}: ${data[key]}</p>`;
+    }
+  })
+  .catch(error => console.error(error));
   </script>
 </body>
 </html>
